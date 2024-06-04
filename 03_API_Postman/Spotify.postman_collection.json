@@ -1,0 +1,1882 @@
+{
+	"info": {
+		"_postman_id": "bfa4649a-3f56-4aff-9a2d-1fc2cd44c899",
+		"name": "Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25072169"
+	},
+	"item": [
+		{
+			"name": "Positive Tests",
+			"item": [
+				{
+					"name": "TC-028, Get Current User's Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// check status is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// check status is 200 var 2\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 201', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 2 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"vary\", 'Authorization');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body contains current User's ID\", () => {\r",
+									"  const responseJson = pm.response.json();\r",
+									"  pm.expect(responseJson.id).to.eql(pm.environment.get(\"USER_ID\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"user-read-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"user-read-email\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/v1/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-029, Get User's Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// check status is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// check status is 200 var 2\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time 1 var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 2 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'public, max-age=14400');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body contains current User's ID\", () => {\r",
+									"  const responseJson = pm.response.json();\r",
+									"  pm.expect(responseJson.id).to.eql(pm.environment.get(\"USER_ID\"));\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}/v1/users/{{USER_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-030, Create Playlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 201\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(201);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 201', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 10 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Add playlist ID to environment\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    let pl_id = jsonData.id;\r",
+									"    pm.environment.set('PLAYLIST_ID', pl_id); \r",
+									"    \r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomNoun}}\",\r\n    \"description\": \"{{$randomAdjective}}\",\r\n    \"public\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/v1/users/{{USER_ID}}/playlists",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{USER_ID}}",
+								"playlists"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "31ez2crd6fyo3qaqlfhchrup5bva",
+									"disabled": true
+								},
+								{
+									"key": "scope",
+									"value": "playlist-modify-public",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-031, Get User's Playlists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", () => {",
+									"  pm.expect(pm.response.code).to.eql(200);",
+									"});",
+									"",
+									"// check status var 1",
+									"pm.test('Check there is no status except 200', function() {",
+									"    pm.expect(pm.response.code).to.not.eql(400);",
+									"    pm.expect(pm.response.code).to.not.eql(401);",
+									"    pm.expect(pm.response.code).to.not.eql(404);",
+									"    pm.expect(pm.response.code).to.not.eql(429);",
+									"    pm.expect(pm.response.code).to.not.eql(500);",
+									"});",
+									"",
+									"// check response time var",
+									"pm.test(\"Response time is less than 700ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);",
+									"});",
+									"",
+									"// check response size",
+									"pm.test(\"Response size is less than 10 kB\", function () {",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);",
+									"});",
+									"",
+									"// check Header ",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');",
+									"    pm.response.to.have.header(\"cache-control\", 'public, max-age=0');",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');",
+									"    pm.response.to.have.header(\"server\", 'envoy');",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');",
+									"});",
+									"",
+									"",
+									"// pm.test(\"New playlist ID is in response\", function () {",
+									"//     const jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.items[0].id).to.eql(pm.environment.get(\"PLAYLIST_ID\"));",
+									"// });",
+									"",
+									"pm.test(\"New playlist ID is in response\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"PLAYLIST_ID\"));",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-read-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"playlist-read-collaborative\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-read-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}/v1/users/{{USER_ID}}/playlists",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{USER_ID}}",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-032, Change Playlist Details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let new_name = pm.variables.replaceIn('{{$randomNoun}}');\r",
+									"pm.environment.set('NEW_PL_NAME', new_name);\r",
+									"\r",
+									"let new_descr = pm.variables.replaceIn('{{$randomAdjective}}');\r",
+									"pm.environment.set('NEW_PL_DESCR', new_descr);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 2 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\", '0');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n\r\n{\r\n    \"name\": \"{{NEW_PL_NAME}}\",\r\n    \"description\": \"{{NEW_PL_DESCR}}\",\r\n    \"public\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/v1/playlists/{{PLAYLIST_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{{PLAYLIST_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check User's Playlists Was Changed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", () => {",
+									"  pm.expect(pm.response.code).to.eql(200);",
+									"});",
+									"",
+									"// check status var 1",
+									"pm.test('Check there is no status except 200', function() {",
+									"    pm.expect(pm.response.code).to.not.eql(400);",
+									"    pm.expect(pm.response.code).to.not.eql(401);",
+									"    pm.expect(pm.response.code).to.not.eql(404);",
+									"    pm.expect(pm.response.code).to.not.eql(429);",
+									"    pm.expect(pm.response.code).to.not.eql(500);",
+									"});",
+									"",
+									"// check response time var",
+									"pm.test(\"Response time is less than 700ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);",
+									"});",
+									"",
+									"// check response size",
+									"pm.test(\"Response size is less than 10 kB\", function () {",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);",
+									"});",
+									"",
+									"// check Header ",
+									"pm.test(\"Header is correct\", function () {",
+									"    pm.response.to.have.header(\"Content-type\", 'application/json; charset=utf-8');",
+									"    pm.response.to.have.header(\"cache-control\", 'public, max-age=0');",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');",
+									"    pm.response.to.have.header(\"server\", 'envoy');",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');",
+									"});",
+									"",
+									"pm.test(\"New playlist name is in response\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"NEW_PL_NAME\"));",
+									"});",
+									"",
+									"pm.test(\"New playlist description is in response\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"NEW_PL_DESCR\"));",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-read-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"playlist-read-collaborative\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-read-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}/v1/playlists/{{PLAYLIST_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{{PLAYLIST_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Items to Playlist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});;\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than  kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body cresponse contains snapshot_id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"snapshot_id\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uris\": [\r\n        \"{{TRACK}}\"\r\n    ]\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/v1/playlists/{{PLAYLIST_ID}}/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{{PLAYLIST_ID}}",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Playlist Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 10 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'public, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Added track is in playlist\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"TRACK\"));\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"playlist-read-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-read-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/v1/playlists/{{PLAYLIST_ID}}/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{{PLAYLIST_ID}}",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Playlist Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 10 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body response contains snapshot_id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"snapshot_id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tracks\": [\r\n        {\r\n            \"uri\": \"{{TRACK}}\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/v1/playlists/{{PLAYLIST_ID}}/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{{PLAYLIST_ID}}",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Playlist Items Were Deleted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 10 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'public, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Added track is in playlist\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.include(pm.environment.get(\"TRACK\"));\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"playlist-read-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-read-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/v1/playlists/{{PLAYLIST_ID}}/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{{PLAYLIST_ID}}",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Tracks for Current User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time \r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 10 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\", '0');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"user-library-modify\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\": [\r\n        \"{{TRACK_2}}\",\r\n        \"{{TRACK_3}}\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/v1/me/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"me",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User's Saved Tracks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 25 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(25600);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"vary\", 'Authorization');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Added tracks are in saved\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"TRACK_2\"));\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"TRACK_3\"));\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"user-library-read\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/v1/me/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"me",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User's Saved Tracks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status \r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time \r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 10 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(10240);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\", '0');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');    \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"{{TRACK_2}}\",\r\n    \"{{TRACK_3}}\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/v1/me/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"me",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check User's Saved Tracks Were Deleted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 200', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(400);\r",
+									"    pm.expect(pm.response.code).to.not.eql(401);\r",
+									"    pm.expect(pm.response.code).to.not.eql(404);\r",
+									"    pm.expect(pm.response.code).to.not.eql(429);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time var\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 25 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(25600);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"vary\", 'Authorization');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Added tracks are in saved\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.include(pm.environment.get(\"TRACK_2\"));\r",
+									"    pm.expect(pm.response.text()).to.not.include(pm.environment.get(\"TRACK_3\"));\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\"user-library-read\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/v1/me/tracks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"me",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative Tests",
+			"item": [
+				{
+					"name": "NEG_Get User's Profile with Unexisted ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// check status is 400\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 400', function() {\r",
+									"    pm.response.to.not.have.status(200);\r",
+									"    pm.response.to.not.have.status(201);\r",
+									"    pm.response.to.not.have.status(500);\r",
+									"    pm.response.to.not.have.status(502);\r",
+									"});\r",
+									"\r",
+									"// check response time\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 2 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"x-robots-tag\", 'noindex, nofollow');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains warning sign\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Invalid username\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}/v1/users/{{WRONG_USER_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{WRONG_USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NEG_Playlist name more than 100 characters",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// let long_pl_name = pm.variables.replaceIn('{{$randomLoremParagraph}}');\r",
+									"// pm.environment.set('LONG_PL_NAME', long_pl_name);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// check status is 400\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 400', function() {\r",
+									"    pm.response.to.not.have.status(200);\r",
+									"    pm.response.to.not.have.status(201);\r",
+									"    pm.response.to.not.have.status(500);\r",
+									"    pm.response.to.not.have.status(502);\r",
+									"});\r",
+									"\r",
+									"// check response time\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 2 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Body does NOT contain warning sign\", function () {\r",
+									"//     pm.expect(pm.response.text()).to.include(pm.environment.get(\"LONG_PL_NAME\"));\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Body contains warning sign\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Invalid playlist name. No more than 100 characters.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{LONG_PL_NAME}}\",\r\n    \"description\": \"New playlist description\",\r\n    \"public\": true\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/v1/users/{{USER_ID}}/playlists",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{USER_ID}}",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Playlist name with 0 characters",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// check status is 400\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 400', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(200);\r",
+									"    pm.expect(pm.response.code).to.not.eql(201);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 2 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Body does NOT contain warning sign\", function () {\r",
+									"//     pm.expect(pm.response.text()).to.include(pm.environment.get(\"LONG_PL_NAME\"));\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Body contains warning sign\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Missing required field: name\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-private\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							},
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": ,\r\n    \"description\": \"New playlist description\",\r\n    \"public\": true\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/v1/users/{{USER_ID}}/playlists",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{USER_ID}}",
+								"playlists"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "31ez2crd6fyo3qaqlfhchrup5bva",
+									"disabled": true
+								},
+								{
+									"key": "scope",
+									"value": "playlist-modify-public",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Items to Playlist With Empty  Body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// check status is 400\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// check status var 1\r",
+									"pm.test('Check there is no status except 400', function() {\r",
+									"    pm.expect(pm.response.code).to.not.eql(200);\r",
+									"    pm.expect(pm.response.code).to.not.eql(201);\r",
+									"    pm.expect(pm.response.code).to.not.eql(500);\r",
+									"});\r",
+									"\r",
+									"// check response time\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"// check response size\r",
+									"pm.test(\"Response size is less than 2 kB\", function () {\r",
+									"    pm.expect(pm.response.responseSize).to.be.below(2048);\r",
+									"});\r",
+									"\r",
+									"// check Header \r",
+									"pm.test(\"Header is correct\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'application/json; charset=utf-8');\r",
+									"    pm.response.to.have.header(\"cache-control\", 'private, max-age=0');\r",
+									"    pm.response.to.have.header(\"access-control-allow-headers\", 'Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version, X-Cloud-Trace-Context, client-token, content-access-token');\r",
+									"    pm.response.to.have.header(\"access-control-allow-methods\", 'GET, POST, OPTIONS, PUT, DELETE, PATCH');\r",
+									"    pm.response.to.have.header(\"access-control-allow-credentials\", 'true');\r",
+									"    pm.response.to.have.header(\"access-control-max-age\", '604800');\r",
+									"    pm.response.to.have.header(\"content-encoding\", 'gzip');\r",
+									"    pm.response.to.have.header(\"strict-transport-security\", 'max-age=31536000');\r",
+									"    pm.response.to.have.header(\"x-content-type-options\", 'nosniff');\r",
+									"    pm.response.to.have.header(\"server\", 'envoy');\r",
+									"    pm.response.to.have.header(\"Via\", 'HTTP/2 edgeproxy, 1.1 google');\r",
+									"    pm.response.to.have.header(\"Alt-Svc\", 'h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000');\r",
+									"    pm.response.to.have.header(\"Transfer-Encoding\", 'chunked');\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Body does NOT contain warning sign\", function () {\r",
+									"//     pm.expect(pm.response.text()).to.include(pm.environment.get(\"LONG_PL_NAME\"));\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Body contains warning sign\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Invalid base62 id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "scope",
+								"value": "[{\"key\":\"scope\",\"value\":\" playlist-modify-public\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uris\": [\r\n        \"\"\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.spotify.com/v1/playlists/{{PLAYLIST_ID}}/tracks",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{{PLAYLIST_ID}}",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "scope",
+				"value": "playlist-modify-public, playlist-modify-private, playlist-read-private, playlist-read-collaborative, playlist-modify-public, playlist-modify-private",
+				"type": "string"
+			},
+			{
+				"key": "refreshRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "authRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenName",
+				"value": "Spotify API",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "http://localhost:8888/callback",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "93d31203f80f4a0092e6766423bf717e",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "999ba4ee1d8b4ab9ac41cbdd92c9171c",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://accounts.spotify.com/authorize",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://accounts.spotify.com/api/token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

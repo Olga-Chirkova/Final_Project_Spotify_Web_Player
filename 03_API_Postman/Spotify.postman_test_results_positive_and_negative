@@ -1,0 +1,1108 @@
+{
+	"id": "4db2aa3f-befe-4123-9de7-6c56c8d85482",
+	"name": "Spotify",
+	"timestamp": "2024-06-04T00:47:14.910Z",
+	"collection_id": "25072169-bfa4649a-3f56-4aff-9a2d-1fc2cd44c899",
+	"folder_id": 0,
+	"environment_id": "25072169-bac8df15-96c3-4792-975f-3976c0ec4650",
+	"totalPass": 115,
+	"delay": "800",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-06-04T00:46:55.647Z",
+	"totalFail": 5,
+	"results": [
+		{
+			"id": "5e3e213d-47a5-4c87-851f-6cacdfef4c73",
+			"name": "TC-028, Get Current User's Profile",
+			"url": "https://api.spotify.com/v1/me",
+			"time": 273,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 201": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 2 kB": true,
+				"Header is correct": true,
+				"Body contains current User's ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 2 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains current User's ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				273
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 201": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 2 kB": true,
+					"Header is correct": true,
+					"Body contains current User's ID": true
+				}
+			]
+		},
+		{
+			"id": "8fe5f190-776e-40a0-b6a1-982a196d3d43",
+			"name": "TC-029, Get User's Profile",
+			"url": "https://api.spotify.com/v1/users/31ez2crd6fyo3qaqlfhchrup5bva",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 2 kB": true,
+				"Header is correct": true,
+				"Body contains current User's ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 2 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains current User's ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 2 kB": true,
+					"Header is correct": true,
+					"Body contains current User's ID": true
+				}
+			]
+		},
+		{
+			"id": "39420169-ef03-45f7-9f11-8597c3b6dc7b",
+			"name": "TC-030, Create Playlist",
+			"url": "https://api.spotify.com/v1/users/31ez2crd6fyo3qaqlfhchrup5bva/playlists",
+			"time": 197,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Check there is no status except 201": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true,
+				"Add playlist ID to environment": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Add playlist ID to environment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				197
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Check there is no status except 201": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true,
+					"Add playlist ID to environment": true
+				}
+			]
+		},
+		{
+			"id": "d0d37e09-d0ff-4825-8c9d-8f7e731cdc74",
+			"name": "TC-031, Get User's Playlists",
+			"url": "https://api.spotify.com/v1/users/31ez2crd6fyo3qaqlfhchrup5bva/playlists",
+			"time": 156,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true,
+				"New playlist ID is in response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"New playlist ID is in response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				156
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true,
+					"New playlist ID is in response": true
+				}
+			]
+		},
+		{
+			"id": "922b3b48-8417-40e0-b961-47ef4fc38336",
+			"name": "TC-032, Change Playlist Details",
+			"url": "https://api.spotify.com/v1/playlists/7rWSL9H6VkN6AlAq7ribGS",
+			"time": 172,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 2 kB": true,
+				"Header is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 2 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				172
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 2 kB": true,
+					"Header is correct": true
+				}
+			]
+		},
+		{
+			"id": "d67ed396-0eaa-4429-9a43-0bf5d8206b73",
+			"name": "Check User's Playlists Was Changed",
+			"url": "https://api.spotify.com/v1/playlists/7rWSL9H6VkN6AlAq7ribGS",
+			"time": 99,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true,
+				"New playlist name is in response": false,
+				"New playlist description is in response": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"New playlist name is in response": {
+					"pass": 0,
+					"fail": 1
+				},
+				"New playlist description is in response": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				99
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true,
+					"New playlist name is in response": false,
+					"New playlist description is in response": false
+				}
+			]
+		},
+		{
+			"id": "9d210ff9-80c1-414e-81be-139d4e8a7e53",
+			"name": "Add Items to Playlist",
+			"url": "https://api.spotify.com/v1/playlists/7rWSL9H6VkN6AlAq7ribGS/tracks",
+			"time": 189,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than  kB": true,
+				"Header is correct": true,
+				"Body cresponse contains snapshot_id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than  kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body cresponse contains snapshot_id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				189
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than  kB": true,
+					"Header is correct": true,
+					"Body cresponse contains snapshot_id": true
+				}
+			]
+		},
+		{
+			"id": "df086dd4-59e5-463e-80ec-39a3e3c6b720",
+			"name": "Get Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/7rWSL9H6VkN6AlAq7ribGS/tracks",
+			"time": 205,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true,
+				"Added track is in playlist": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Added track is in playlist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				205
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true,
+					"Added track is in playlist": true
+				}
+			]
+		},
+		{
+			"id": "dda578a8-755f-4f9e-a34c-d71e76e89643",
+			"name": "Remove Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/7rWSL9H6VkN6AlAq7ribGS/tracks",
+			"time": 155,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true,
+				"Body response contains snapshot_id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response contains snapshot_id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				155
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true,
+					"Body response contains snapshot_id": true
+				}
+			]
+		},
+		{
+			"id": "cab7f7ab-c8a3-4b27-95f2-e8527b8e35db",
+			"name": "Check Playlist Items Were Deleted",
+			"url": "https://api.spotify.com/v1/playlists/7rWSL9H6VkN6AlAq7ribGS/tracks",
+			"time": 93,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true,
+				"Added track is in playlist": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Added track is in playlist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				93
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true,
+					"Added track is in playlist": true
+				}
+			]
+		},
+		{
+			"id": "ecc2b8e5-feed-4d83-9dce-83265d043230",
+			"name": "Save Tracks for Current User",
+			"url": "https://api.spotify.com/v1/me/tracks",
+			"time": 123,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				123
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true
+				}
+			]
+		},
+		{
+			"id": "3cf8de9e-9a15-4825-98dd-bc608420a266",
+			"name": "Get User's Saved Tracks",
+			"url": "https://api.spotify.com/v1/me/tracks",
+			"time": 349,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 25 kB": true,
+				"Header is correct": true,
+				"Added tracks are in saved": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 25 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Added tracks are in saved": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				349
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 25 kB": true,
+					"Header is correct": true,
+					"Added tracks are in saved": true
+				}
+			]
+		},
+		{
+			"id": "fbffdd35-3c3b-4299-9ffc-50375e58fa7b",
+			"name": "Remove User's Saved Tracks",
+			"url": "https://api.spotify.com/v1/me/tracks",
+			"time": 146,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 10 kB": true,
+				"Header is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 10 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				146
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 10 kB": true,
+					"Header is correct": true
+				}
+			]
+		},
+		{
+			"id": "5386bede-0b92-4dc5-8911-6606e74116cd",
+			"name": "Check User's Saved Tracks Were Deleted",
+			"url": "https://api.spotify.com/v1/me/tracks",
+			"time": 110,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check there is no status except 200": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 25 kB": true,
+				"Header is correct": true,
+				"Added tracks are in saved": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 25 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Added tracks are in saved": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				110
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check there is no status except 200": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 25 kB": true,
+					"Header is correct": true,
+					"Added tracks are in saved": true
+				}
+			]
+		},
+		{
+			"id": "9355ec72-abff-40dd-a21c-2dfce223c8c2",
+			"name": "NEG_Get User's Profile with Unexisted ID",
+			"url": "https://api.spotify.com/v1/users/31ez2crd6fyo3qaqlfhchrup5bvasfhbvdfesjd",
+			"time": 88,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Check there is no status except 400": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 2 kB": true,
+				"Header is correct": true,
+				"Body contains warning sign": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 2 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains warning sign": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Check there is no status except 400": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 2 kB": true,
+					"Header is correct": true,
+					"Body contains warning sign": true
+				}
+			]
+		},
+		{
+			"id": "49120dcc-485d-4516-a6b5-287bc5e09929",
+			"name": "NEG_Playlist name more than 100 characters",
+			"url": "https://api.spotify.com/v1/users/31ez2crd6fyo3qaqlfhchrup5bva/playlists",
+			"time": 112,
+			"responseCode": {
+				"code": 502,
+				"name": "Bad Gateway"
+			},
+			"tests": {
+				"Status code is 400": false,
+				"Check there is no status except 400": false,
+				"Response time is less than 700ms": true,
+				"Response size is less than 2 kB": true,
+				"Header is correct": true,
+				"Body contains warning sign": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Check there is no status except 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 2 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains warning sign": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				112
+			],
+			"allTests": [
+				{
+					"Status code is 400": false,
+					"Check there is no status except 400": false,
+					"Response time is less than 700ms": true,
+					"Response size is less than 2 kB": true,
+					"Header is correct": true,
+					"Body contains warning sign": false
+				}
+			]
+		},
+		{
+			"id": "20648503-30d7-4520-8922-c72fa2699918",
+			"name": "Playlist name with 0 characters",
+			"url": "https://api.spotify.com/v1/users/31ez2crd6fyo3qaqlfhchrup5bva/playlists",
+			"time": 83,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Check there is no status except 400": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 2 kB": true,
+				"Header is correct": true,
+				"Body contains warning sign": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 2 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains warning sign": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				83
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Check there is no status except 400": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 2 kB": true,
+					"Header is correct": true,
+					"Body contains warning sign": true
+				}
+			]
+		},
+		{
+			"id": "5a65e93a-f0d4-4ba9-8f52-f4d94d5eb94f",
+			"name": "Add Items to Playlist With Empty  Body",
+			"url": "https://api.spotify.com/v1/playlists/7rWSL9H6VkN6AlAq7ribGS/tracks",
+			"time": 106,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Check there is no status except 400": true,
+				"Response time is less than 700ms": true,
+				"Response size is less than 2 kB": true,
+				"Header is correct": true,
+				"Body contains warning sign": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check there is no status except 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 700ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is less than 2 kB": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains warning sign": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Check there is no status except 400": true,
+					"Response time is less than 700ms": true,
+					"Response size is less than 2 kB": true,
+					"Header is correct": true,
+					"Body contains warning sign": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2762,
+	"collection": {
+		"requests": [
+			{
+				"id": "5e3e213d-47a5-4c87-851f-6cacdfef4c73",
+				"method": "GET"
+			},
+			{
+				"id": "8fe5f190-776e-40a0-b6a1-982a196d3d43",
+				"method": "GET"
+			},
+			{
+				"id": "39420169-ef03-45f7-9f11-8597c3b6dc7b",
+				"method": "POST"
+			},
+			{
+				"id": "d0d37e09-d0ff-4825-8c9d-8f7e731cdc74",
+				"method": "GET"
+			},
+			{
+				"id": "922b3b48-8417-40e0-b961-47ef4fc38336",
+				"method": "PUT"
+			},
+			{
+				"id": "d67ed396-0eaa-4429-9a43-0bf5d8206b73",
+				"method": "GET"
+			},
+			{
+				"id": "9d210ff9-80c1-414e-81be-139d4e8a7e53",
+				"method": "POST"
+			},
+			{
+				"id": "df086dd4-59e5-463e-80ec-39a3e3c6b720",
+				"method": "GET"
+			},
+			{
+				"id": "dda578a8-755f-4f9e-a34c-d71e76e89643",
+				"method": "DELETE"
+			},
+			{
+				"id": "cab7f7ab-c8a3-4b27-95f2-e8527b8e35db",
+				"method": "GET"
+			},
+			{
+				"id": "ecc2b8e5-feed-4d83-9dce-83265d043230",
+				"method": "PUT"
+			},
+			{
+				"id": "3cf8de9e-9a15-4825-98dd-bc608420a266",
+				"method": "GET"
+			},
+			{
+				"id": "fbffdd35-3c3b-4299-9ffc-50375e58fa7b",
+				"method": "DELETE"
+			},
+			{
+				"id": "5386bede-0b92-4dc5-8911-6606e74116cd",
+				"method": "GET"
+			},
+			{
+				"id": "9355ec72-abff-40dd-a21c-2dfce223c8c2",
+				"method": "GET"
+			},
+			{
+				"id": "49120dcc-485d-4516-a6b5-287bc5e09929",
+				"method": "POST"
+			},
+			{
+				"id": "20648503-30d7-4520-8922-c72fa2699918",
+				"method": "POST"
+			},
+			{
+				"id": "5a65e93a-f0d4-4ba9-8f52-f4d94d5eb94f",
+				"method": "POST"
+			}
+		]
+	}
+}
