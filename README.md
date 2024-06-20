@@ -1,1 +1,1 @@
-# Final_Project_Spotify_Web_Player
+# Project_Spotify_Web_Player
